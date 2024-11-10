@@ -1,0 +1,231 @@
+1
+def xor_binary1(a,b):
+  int_a=int(a,2)
+  int_b=int(b,2)
+  result=int_a^int_b
+  xor_binary=bin(result)[2:]
+  max_len=max(len(a),len(b))
+  xor_binary=xor_binary.zfill(max_len)
+  return xor_binary
+if _name_ =="_main_":
+  string1="1101"
+  string2="1011"
+  result1=xor_binary1(string1, string2)
+  print(f"XOR of {string1} and {string2} is: {result1}")
+END
+2
+def create_piles(n):
+    piles = []
+    current = n
+    increment = 2  
+    while current > 0:
+        piles.append(current)
+        current -= increment
+        increment += 2  
+    piles.reverse() 
+    return piles
+n = 9 
+piles = create_piles(n)
+print("Number of stones in each pile:", piles)
+END
+4  
+def generate_pascals_triangle_iterative(n):
+    triangle = []
+    for i in range(n):
+        row = [1] * (i + 1)  
+        for j in range(1, i):
+            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+        triangle.append(row)
+    return triangle
+
+def print_pascals_triangle(triangle):
+    for row in triangle:
+        print(' '.join(map(str, row)))
+
+if _name_ == "_main_":
+    n = 5
+    triangle = generate_pascals_triangle_iterative(n)
+    print("Pascal's Triangle (Iterative):")
+    print_pascals_triangle(triangle)
+
+def generate_pascals_triangle_recursive(n, triangle=None):
+    if triangle is None:
+        triangle = []
+    if n == 0:
+        return triangle
+    if not triangle:
+        triangle.append([1])
+    else:
+        last_row = triangle[-1]
+        new_row = [1]
+        for i in range(1, len(last_row)):
+            new_row.append(last_row[i - 1] + last_row[i])
+        new_row.append(1)
+        triangle.append(new_row)
+    return generate_pascals_triangle_recursive(n - 1, triangle)
+
+def print_pascals_triangle(triangle):
+    for row in triangle:
+        print(' '.join(map(str, row)))
+
+# Example usage
+if _name_ == "_main_":
+    n = 5
+    triangle = generate_pascals_triangle_recursive(n)
+    print("Pascal's Triangle (Recursive):")
+    print_pascals_triangle(triangle)
+END
+5
+import random
+import string
+
+def generate_random_color_hex():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+
+def generate_random_alphabetical_string(length):
+    return ''.join(random.choices(string.ascii_letters, k=length))
+
+def generate_random_value_between(min_val, max_val):
+    return random.randint(min_val, max_val)
+
+def generate_random_multiple_of_7():
+    return random.choice([i for i in range(0, 71, 7)])
+
+if _name_ == "_main_":
+    color_hex = generate_random_color_hex()
+    print(f"Random Color Hex: {color_hex}")
+
+    alpha_string = generate_random_alphabetical_string(8)
+    print(f"Random Alphabetical String: {alpha_string}")
+
+    random_value = generate_random_value_between(10, 50)
+    print(f"Random Value between 10 and 50: {random_value}")
+
+    random_multiple_of_7 = generate_random_multiple_of_7()
+    print(f"Random Multiple of 7 between 0 and 70: {random_multiple_of_7}")
+END
+7
+import pandas as pd
+
+date_series = pd.Series(["2024-07-20", "2023-12-25", "2021-01-01", "2022-03-15"])
+date_series = pd.to_datetime(date_series)
+
+day_of_month = date_series.dt.day
+day_of_year = date_series.dt.dayofyear
+week_number = date_series.dt.isocalendar().week
+day_of_week = date_series.dt.dayofweek
+
+print("Date Series:")
+print(date_series)
+print("\nDay of Month:")
+print(day_of_month)
+print("\nDay of Year:")
+print(day_of_year)
+print("\nWeek Number:")
+print(week_number)
+print("\nDay of Week:")
+print(day_of_week)
+
+8
+import numpy as np 
+grades = np.array([ 
+ [85, 90, 78], 
+ [92, 88, 84], 
+ [75, 85, 89], 
+ [100, 95, 90] 
+]) 
+student_averages = np.mean(grades, axis=1) 
+class_average = np.mean(grades) 
+print("Grades:") 
+print(grades) 
+print("\nAverage grade for each student:") 
+print(student_averages) 
+print("\nOverall class average:") 
+print(class_average) 
+END
+10
+import pandas as pd
+# Step 1: Create a DataFrame with sample data
+data = {
+'Product': ['A', 'B', 'C', 'D'],
+'Sales_Q1': [1500, 2300, 1200, 1800],
+'Sales_Q2': [1600, 2400, 1300, 1900],
+'Sales_Q3': [1700, 2500, 1400, 2000],
+'Sales_Q4': [1800, 2600, 1500, 2100]
+}
+df = pd.DataFrame(data)
+
+df.to_csv('sales_data.csv', index=False)
+df_loaded = pd.read_csv('sales_data.csv')
+print("DataFrame Loaded from CSV:")
+print(df_loaded)
+df_loaded['Total_Sales'] = df_loaded[['Sales_Q1', 'Sales_Q2', 'Sales_Q3',
+'Sales_Q4']].sum(axis=1)
+df_loaded['Average_Sales_Per_Quarter'] = df_loaded[['Sales_Q1', 'Sales_Q2',
+'Sales_Q3', 'Sales_Q4']].mean(axis=1)
+print("\nProcessed DataFrame:")
+print(df_loaded)
+print("\nMissing Values in DataFrame:")
+print(df_loaded.isnull().sum())
+END
+11
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    'Product': ['A', 'B', 'C', 'D'],
+    'Sales_Q1': [1500, 2300, 1200, 1800],
+    'Sales_Q2': [1600, 2400, 1300, 1900],
+    'Sales_Q3': [1700, 2500, 1400, 2000],
+    'Sales_Q4': [1800, 2600, 1500, 2100]
+}
+df = pd.DataFrame(data)
+
+plt.figure(figsize=(10, 6))
+for product in df['Product']:
+    plt.plot(['Q1', 'Q2', 'Q3', 'Q4'], df[df['Product'] == product].iloc[0, 1:], marker='o', label=product)
+plt.title('Sales over Quarters by Product')
+plt.xlabel('Quarter')
+plt.ylabel('Sales')
+plt.legend(title='Product')
+plt.grid(True)
+plt.savefig('line_plot_sales.png')
+plt.show()
+
+df['Total_Sales'] = df[['Sales_Q1', 'Sales_Q2', 'Sales_Q3', 'Sales_Q4']].sum(axis=1)
+plt.figure(figsize=(10, 6))
+plt.bar(df['Product'], df['Total_Sales'], color='skyblue')
+plt.title('Total Sales by Product')
+plt.xlabel('Product')
+plt.ylabel('Total Sales')
+plt.grid(axis='y')
+plt.savefig('bar_plot_total_sales.png')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+plt.scatter(df['Sales_Q1'], df['Sales_Q4'], color='red')
+plt.title('Sales in Q1 vs Sales in Q4')
+plt.xlabel('Sales Q1')
+plt.ylabel('Sales Q4')
+plt.grid(True)
+plt.savefig('scatter_plot_q1_vs_q4.png')
+plt.show()
+END
+12
+def write_alphabet(n):
+  with open("alphabet.txt", "w") as file:
+    alphabet ="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    c=0
+    for i in alphabet:
+      file.write(i+" ")
+      c+=1
+
+      if c==n:
+        file.write("\n")
+        c=0
+  with open("alphabet.txt", "r") as file:
+    print(file.read())
+
+
+n=int(input("Enter the number of letters per line: "))
+write_alphabet(n)
