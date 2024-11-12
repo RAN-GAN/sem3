@@ -1,5 +1,5 @@
 LINEAR
-1,2
+1,2::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #include<iostream>
 using namespace std;
 int main(){
@@ -58,7 +58,7 @@ int main(){
 }
 END
 BINARY
-1,2,3 
+1,2,3 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // editor1
 #include<iostream>
 using namespace std;
@@ -364,6 +364,8 @@ int main() {
         }
     return 0;
 }
+3. :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 END
 BACKTRACKING 
 1. :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -425,7 +427,7 @@ int main(){
         cout<<"No solution exists";
         return 0;
     }
-    int **mat =new int*[num];
+    int *mat =new int[num];
     for(int ind=0;ind<num;ind++)
     mat[ind]=new int[num];
     nqueen(mat,num,0);
@@ -962,5 +964,3 @@ int main() {
 
     return 0;
 }
-
-
